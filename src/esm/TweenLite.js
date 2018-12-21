@@ -194,15 +194,7 @@ export var TweenLite = (function(window, moduleName) {
 			var t = this._type,
 				pw = this._power,
 				r = (t === 1) ? 1 - p : (t === 2) ? p : (p < 0.5) ? p * 2 : (1 - p) * 2;
-			if (pw === 1) {
-				r *= r;
-			} else if (pw === 2) {
-				r *= r * r;
-			} else if (pw === 3) {
-				r *= r * r * r;
-			} else if (pw === 4) {
-				r *= r * r * r * r;
-			}
+				r = (pw === 1) ? Math.pow(r,1) : (pw === 2) ? Math.pow(r,2) : (pw === 3) ? Math.pow(r,3) : Math.pow(r,4);
 			return (t === 1) ? 1 - r : (t === 2) ? r : (p < 0.5) ? r / 2 : 1 - (r / 2);
 		};
 
